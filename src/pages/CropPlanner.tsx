@@ -4,7 +4,7 @@ import { useLang } from '../i18n/LangContext';
 import { CROP_RULES } from '../data/mockData';
 import type { CropRule } from '../data/mockData';
 import {
-  Card, PageHeader, DemoBanner, DataStatusBadge, RiskBadge,
+  Card, PageHeader, DemoBanner, DataStatusBadge,
   Button, FormGroup, Input, Select, SectionTitle
 } from '../components/ui';
 

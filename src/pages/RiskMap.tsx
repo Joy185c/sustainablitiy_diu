@@ -5,7 +5,7 @@ import { Info, MapPin, TestTube, Satellite, AlertTriangle } from 'lucide-react';
 import { useLang } from '../i18n/LangContext';
 import { FIELDS } from '../data/mockData';
 import type { Field, RiskLevel } from '../data/mockData';
-import { Card, DataStatusBadge, RiskBadge, PageHeader, DemoBanner, Button, Select } from '../components/ui';
+import { Card, DataStatusBadge, RiskBadge, PageHeader, DemoBanner, Select } from '../components/ui';
 
 const RISK_COLORS: Record<RiskLevel, string> = {
   low: '#16a34a',
@@ -22,7 +22,7 @@ function MapBoundsReset() {
 }
 
 export default function RiskMap() {
-  const { t, lang } = useLang();
+  const { t } = useLang();
   const [selected, setSelected] = useState<Field | null>(null);
   const [filterRisk, setFilterRisk] = useState<string>('all');
   const [filterUpazila, setFilterUpazila] = useState<string>('all');

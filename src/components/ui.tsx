@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { DataStatus, RiskLevel } from '../data/mockData';
 
 // ── DataStatusBadge ──────────────────────────────────────────

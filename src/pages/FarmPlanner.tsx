@@ -167,7 +167,7 @@ export default function FarmPlanner() {
                     <YAxis tickFormatter={v => `৳${(v/1000).toFixed(0)}k`} tick={{ fontSize: 11, fill: '#6b7280' }} />
                     <Tooltip
                       contentStyle={{ fontSize: 12, borderRadius: 8, border: '1px solid #e5e7eb' }}
-                      formatter={(v: number, n: string) => [fmt(v), n]}
+                      formatter={(v, n) => [fmt(Number(v)), String(n)]}
                     />
                     <Legend iconSize={10} wrapperStyle={{ fontSize: 11 }} />
                     <Bar dataKey="cost" name="Total Cost (BDT)" fill="#dc2626" radius={[3, 3, 0, 0]} />

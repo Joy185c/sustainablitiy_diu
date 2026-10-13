@@ -19,7 +19,7 @@ interface HistoryItem {
 }
 
 export default function Notifications() {
-  const { t, lang } = useLang();
+  const { t } = useLang();
   const [risk, setRisk] = useState<RiskLevel>('moderate');
   const [season, setSeason] = useState('rabi');
   const [smsText, setSmsText] = useState('');

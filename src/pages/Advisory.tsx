@@ -101,7 +101,7 @@ export default function Advisory() {
               borderLeft: `4px solid ${riskColor[generated.risk]}`,
               background: '#fafafa',
             }}>
-              <div style={{ display: 'flex', justify: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
                 <div>
                   <div style={{ fontWeight: 800, fontSize: 17, color: '#111827', marginBottom: 4 }}>
                     {lang === 'bn' ? t.advisory_title : 'Agricultural Advisory'}

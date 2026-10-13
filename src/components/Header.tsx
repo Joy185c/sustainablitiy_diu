@@ -6,7 +6,7 @@ interface HeaderProps {
 }
 
 export default function Header({ onMenuToggle }: HeaderProps) {
-  const { t, toggleLang, lang } = useLang();
+  const { t, toggleLang } = useLang();
 
   return (
     <header style={{

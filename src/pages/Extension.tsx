@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { Download, Search, ChevronDown, ChevronUp, AlertTriangle, CheckCircle, TestTube } from 'lucide-react';
+import { Download, Search, AlertTriangle, CheckCircle, TestTube } from 'lucide-react';
 import { useLang } from '../i18n/LangContext';
 import { FIELDS } from '../data/mockData';
-import type { Field, RiskLevel } from '../data/mockData';
+import type { Field } from '../data/mockData';
 import {
-  Card, PageHeader, DemoBanner, SectionTitle, Button,
-  DataStatusBadge, RiskBadge, Input, Select, StatCard
+  Card, PageHeader, DemoBanner, Button,
+  DataStatusBadge, RiskBadge, Select, StatCard
 } from '../components/ui';
 
 export default function Extension() {
@@ -43,7 +43,6 @@ export default function Extension() {
     a.click(); URL.revokeObjectURL(url);
   }
 
-  const riskColor = { low: '#16a34a', moderate: '#d97706', high: '#dc2626' };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>

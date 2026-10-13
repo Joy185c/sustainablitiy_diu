@@ -83,7 +83,7 @@ export default function Climate() {
               <YAxis unit=" mm" tick={{ fontSize: 11, fill: '#6b7280' }} />
               <Tooltip
                 contentStyle={{ fontSize: 12, borderRadius: 8, border: '1px solid #e5e7eb' }}
-                formatter={(v: number) => [`${v} mm`, 'Rainfall']}
+                formatter={(v) => [`${v} mm`, 'Rainfall']}
               />
               <Bar dataKey="rainfall_mm" name="Rainfall (mm)" fill="#3b82f6" radius={[3, 3, 0, 0]} />
             </BarChart>
@@ -109,7 +109,7 @@ export default function Climate() {
               <YAxis unit="°C" tick={{ fontSize: 11, fill: '#6b7280' }} />
               <Tooltip
                 contentStyle={{ fontSize: 12, borderRadius: 8, border: '1px solid #e5e7eb' }}
-                formatter={(v: number, n: string) => [`${v}°C`, n === 'temp_max_c' ? 'Max Temp' : 'Min Temp']}
+                formatter={(v, n) => [`${v}°C`, n === 'temp_max_c' ? 'Max Temp' : 'Min Temp']}
               />
               <Legend iconSize={10} wrapperStyle={{ fontSize: 11 }} />
               <Line type="monotone" dataKey="temp_max_c" name="Max Temp (°C)" stroke="#dc2626" strokeWidth={2} dot={false} />

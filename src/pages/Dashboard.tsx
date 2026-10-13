@@ -14,7 +14,7 @@ import {
   Card, StatCard, SectionTitle, DemoBanner, DataStatusBadge, RiskBadge, PageHeader, Button
 } from '../components/ui';
 
-const RISK_COLOR = { low: '#16a34a', moderate: '#d97706', high: '#dc2626' };
+
 
 export default function Dashboard() {
   const { t, lang } = useLang();
@@ -90,7 +90,7 @@ export default function Dashboard() {
               <YAxis tick={{ fontSize: 11, fill: '#6b7280' }} domain={[0, 10]} />
               <Tooltip
                 contentStyle={{ fontSize: 12, borderRadius: 8, border: '1px solid #e5e7eb' }}
-                formatter={(v: number, n: string) => [v.toFixed(1), n === 'risk_index' ? 'Risk Index (0–10)' : 'EC Proxy (dS/m)']}
+                formatter={(v, n) => [Number(v).toFixed(1), n === 'risk_index' ? 'Risk Index (0–10)' : 'EC Proxy (dS/m)']}
               />
               <Legend iconSize={10} wrapperStyle={{ fontSize: 11 }} />
               <Area type="monotone" dataKey="risk_index" name="Risk Index" stroke="#d97706" strokeWidth={2} fill="url(#riskGrad)" dot={false} />
