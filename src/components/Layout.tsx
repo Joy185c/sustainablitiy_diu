@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import OnboardingModal from './OnboardingModal';
+import AIChatbot from './AIChatbot';
 
 export default function Layout() {
   const [collapsed, setCollapsed] = useState(false);
@@ -38,6 +40,8 @@ export default function Layout() {
           </div>
         </main>
       </div>
+      <OnboardingModal />
+      <AIChatbot />
 
       <style>{`
         @media (max-width: 768px) {

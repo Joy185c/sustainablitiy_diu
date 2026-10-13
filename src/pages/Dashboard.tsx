@@ -1,12 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   AlertTriangle, Calendar, CloudRain, Flag, TrendingUp,
-  Sprout, Bell, ArrowRight, CheckCircle, AlertCircle
+  Sprout, Bell, ArrowRight, CheckCircle, AlertCircle, MapPin, Plus
 } from 'lucide-react';
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts';
 import { useLang } from '../i18n/LangContext';
+import { useFarms } from '../farms/FarmsContext';
 import {
   DASHBOARD_SUMMARY, RISK_TREND_DATA, CROP_RULES, RECENT_ADVISORIES
 } from '../data/mockData';
@@ -18,6 +19,8 @@ import {
 
 export default function Dashboard() {
   const { t, lang } = useLang();
+  const navigate = useNavigate();
+  const { farms } = useFarms();
   const s = DASHBOARD_SUMMARY;
   const topCrops = CROP_RULES.slice(0, 3);
 
@@ -29,6 +32,61 @@ export default function Dashboard() {
       />
 
       <DemoBanner text={t.dash_demo_banner} />
+
+      {/* ── My Farms integration */}
+      {farms.length === 0 ? (
+        <Card style={{ background: 'linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%)', border: '2px dashed #86efac' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
+            <div style={{ fontSize: 40 }}>🌾</div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontWeight: 700, fontSize: 16, color: '#0f3b24', marginBottom: 5 }}>Set Up Your First Farm</div>
+              <div style={{ fontSize: 13.5, color: '#4b5563', lineHeight: 1.6 }}>
+                Select your farmland on the interactive map to unlock personalized salinity risk analysis and crop recommendations for your exact location.
+              </div>
+            </div>
+            <Button variant="primary" onClick={() => navigate('/my-farms/new')} style={{ flexShrink: 0 }}>
+              <Plus size={14} /> Select Your Farm
+            </Button>
+          </div>
+        </Card>
+      ) : (
+        <Card style={{ background: 'linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%)', border: '1px solid #bbf7d0' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap', marginBottom: 14 }}>
+            <div style={{ fontSize: 24 }}>🌾</div>
+            <div style={{ fontWeight: 700, fontSize: 15, color: '#0f3b24' }}>My Farms — {farms.length} registered</div>
+            <Button variant="secondary" size="sm" onClick={() => navigate('/my-farms')} style={{ marginLeft: 'auto' }}>
+              Manage Farms
+            </Button>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 10 }}>
+            {farms.slice(0, 4).map(farm => (
+              <button key={farm.id} onClick={() => navigate(`/my-farms/${farm.id}`)}
+                style={{ textAlign: 'left', padding: '10px 12px', borderRadius: 9, border: '1px solid #bbf7d0', background: '#fff', cursor: 'pointer' }}>
+                <div style={{ fontWeight: 600, fontSize: 13, color: '#111827', marginBottom: 3 }}>{farm.name}</div>
+                <div style={{ fontSize: 11.5, color: '#6b7280' }}>
+                  <MapPin size={10} style={{ display: 'inline', marginRight: 3 }} />
+                  {farm.village}, {farm.upazila}
+                </div>
+                {farm.estimatedArea && (
+                  <div style={{ fontSize: 11.5, color: '#1a5c38', fontWeight: 600, marginTop: 3 }}>
+                    {farm.estimatedArea.toFixed(2)} {farm.estimatedAreaUnit}
+                  </div>
+                )}
+              </button>
+            ))}
+            {farms.length > 4 && (
+              <button onClick={() => navigate('/my-farms')}
+                style={{ padding: '10px 12px', borderRadius: 9, border: '1px dashed #bbf7d0', background: '#f0fdf4', cursor: 'pointer', color: '#1a5c38', fontSize: 12.5, fontWeight: 600 }}>
+                +{farms.length - 4} more farms →
+              </button>
+            )}
+            <button onClick={() => navigate('/my-farms/new')}
+              style={{ padding: '10px 12px', borderRadius: 9, border: '1px dashed #d1d5db', background: '#fafafa', cursor: 'pointer', color: '#6b7280', fontSize: 12.5, display: 'flex', alignItems: 'center', gap: 6 }}>
+              <Plus size={13} /> Add Farm
+            </button>
+          </div>
+        </Card>
+      )}
 
       {/* Summary Cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>

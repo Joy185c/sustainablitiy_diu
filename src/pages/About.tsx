@@ -71,7 +71,7 @@ export default function About() {
             AI-Assisted Salinity Risk Intelligence and Climate-Resilient Crop Planning for Coastal Bangladesh
           </p>
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-            {['Hack for Humanity 2025', 'Environmental Sustainability', 'Climate Resilience', 'Satkhira Pilot'].map(t => (
+            {['SUSTAINABLE PROJECT COMPETITION - 2026', 'Environmental Sustainability', 'Climate Resilience', 'Satkhira Pilot'].map(t => (
               <span key={t} style={{ background: 'rgba(255,255,255,0.15)', color: '#fff', borderRadius: 6, padding: '4px 12px', fontSize: 12, fontWeight: 600 }}>{t}</span>
             ))}
           </div>
@@ -192,7 +192,7 @@ export default function About() {
       <Card style={{ background: 'linear-gradient(135deg, #f0fdf4, #f0fdfa)', border: '1px solid #bbf7d0' }}>
         <SectionTitle>{t.about_team}</SectionTitle>
         <div style={{ fontSize: 13.5, color: '#374151', lineHeight: 1.8 }}>
-          <p>SalinO-Crop was developed for the <strong>Hack for Humanity — Hack to Protect the Environment</strong> hackathon under the <strong>Environmental Sustainability and Climate Resilience</strong> track.</p>
+          <p>SalinO-Crop was developed for the <strong>SUSTAINABLE PROJECT COMPETITION - 2026</strong> under the <strong>Environmental Sustainability and Climate Resilience</strong> track.</p>
           <p>The project addresses a real and urgent challenge facing millions of smallholder farmers in coastal Bangladesh, where salinity is one of the fastest-growing threats to food security and agricultural livelihoods.</p>
           <div style={{ marginTop: 12, fontSize: 12, color: '#6b7280' }}>
             Built with: React · TypeScript · Tailwind CSS · Leaflet · Recharts · Bangla (Hind Siliguri) typography

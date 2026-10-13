@@ -2,9 +2,10 @@ import { NavLink, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard, Map, CloudRain, Sprout, Calculator,
   BookOpen, MessageSquare, Users, Database, Info,
-  ChevronLeft, ChevronRight, Leaf
+  ChevronLeft, ChevronRight, Leaf, Tractor
 } from 'lucide-react';
 import { useLang } from '../i18n/LangContext';
+import { useFarms } from '../farms/FarmsContext';
 
 interface SidebarProps {
   collapsed: boolean;
@@ -14,6 +15,7 @@ interface SidebarProps {
 }
 
 const NAV_ITEMS = [
+  { key: 'nav_my_farms',     path: '/my-farms',      icon: Tractor,        highlight: true },
   { key: 'nav_dashboard',    path: '/',              icon: LayoutDashboard },
   { key: 'nav_risk_map',     path: '/risk-map',      icon: Map },
   { key: 'nav_climate',      path: '/climate',       icon: CloudRain },
@@ -28,6 +30,7 @@ const NAV_ITEMS = [
 
 export default function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose }: SidebarProps) {
   const { t } = useLang();
+  const { farms } = useFarms();
   const location = useLocation();
 
   const sidebarContent = (
@@ -72,10 +75,11 @@ export default function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose
 
       {/* Nav links */}
       <nav style={{ flex: 1, padding: '12px 8px', overflowY: 'auto', overflowX: 'hidden' }}>
-        {NAV_ITEMS.map(({ key, path, icon: Icon }) => {
+        {NAV_ITEMS.map(({ key, path, icon: Icon, highlight }) => {
           const isActive = path === '/'
             ? location.pathname === '/'
             : location.pathname.startsWith(path);
+          const isMyFarms = path === '/my-farms';
           return (
             <NavLink
               key={path}
@@ -88,20 +92,32 @@ export default function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose
                 gap: collapsed ? 0 : 10,
                 padding: collapsed ? '10px' : '9px 12px',
                 borderRadius: 8,
-                marginBottom: 2,
+                marginBottom: isMyFarms ? 6 : 2,
                 textDecoration: 'none',
-                color: isActive ? '#ffffff' : '#a7f3d0',
-                background: isActive ? 'rgba(255,255,255,0.15)' : 'transparent',
-                fontWeight: isActive ? 600 : 400,
+                color: isActive ? '#ffffff' : highlight ? '#fde68a' : '#a7f3d0',
+                background: isActive ? 'rgba(255,255,255,0.15)' : isMyFarms && !isActive ? 'rgba(255,255,255,0.07)' : 'transparent',
+                fontWeight: isActive ? 600 : highlight ? 600 : 400,
                 fontSize: 13.5,
                 transition: 'all 0.15s ease',
                 justifyContent: collapsed ? 'center' : 'flex-start',
                 whiteSpace: 'nowrap',
+                borderBottom: isMyFarms ? '1px solid rgba(255,255,255,0.1)' : 'none',
+                paddingBottom: isMyFarms ? 11 : undefined,
               }}
               className="sidebar-link-item"
             >
               <Icon size={18} strokeWidth={isActive ? 2.5 : 2} style={{ flexShrink: 0 }} />
-              {!collapsed && <span>{t[key as keyof typeof t]}</span>}
+              {!collapsed && (
+                <span style={{ flex: 1 }}>{t[key as keyof typeof t]}</span>
+              )}
+              {/* Farm count badge */}
+              {isMyFarms && !collapsed && farms.length > 0 && (
+                <span style={{
+                  background: '#fbbf24', color: '#78350f',
+                  fontSize: 10, fontWeight: 800, borderRadius: 10,
+                  padding: '1px 6px', minWidth: 18, textAlign: 'center', flexShrink: 0,
+                }}>{farms.length}</span>
+              )}
             </NavLink>
           );
         })}
@@ -137,7 +153,7 @@ export default function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose
           color: 'rgba(255,255,255,0.4)',
           lineHeight: 1.5,
         }}>
-          Hack for Humanity 2025<br />
+          SUSTAINABLE PROJECT COMPETITION - 2026<br />
           Environmental Sustainability
         </div>
       )}

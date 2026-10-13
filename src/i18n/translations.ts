@@ -1,11 +1,12 @@
 export const en = {
   // Nav
+  nav_my_farms: 'My Farms',
   nav_dashboard: 'Dashboard',
   nav_risk_map: 'Risk Map',
   nav_climate: 'Climate',
   nav_crop_planner: 'Crop Planner',
   nav_farm_planner: 'Farm Planner',
-  nav_advisory: 'Advisory Centre',
+  nav_advisory: 'AI Advisory',
   nav_notifications: 'SMS & Voice',
   nav_extension: 'Extension Dashboard',
   nav_methodology: 'Data & Methodology',
@@ -130,7 +131,7 @@ export const en = {
   farm_disclaimer: '⚠ Gross margin is not net household income or guaranteed profit. All values use user-entered assumptions. Defaults are illustrative.',
 
   // Advisory
-  advisory_title: 'Bangla Advisory Centre',
+  advisory_title: 'AI Advisory Centre',
   advisory_subtitle: 'Bilingual crop and salinity guidance',
   advisory_generate: 'Generate Advisory',
   advisory_print: 'Print',
@@ -231,12 +232,13 @@ export const en = {
 
 export const bn: typeof en = {
   // Nav
+  nav_my_farms: 'আমার খামার',
   nav_dashboard: 'ড্যাশবোর্ড',
   nav_risk_map: 'ঝুঁকির মানচিত্র',
   nav_climate: 'জলবায়ু',
   nav_crop_planner: 'ফসল পরিকল্পনা',
   nav_farm_planner: 'খামার পরিকল্পনা',
-  nav_advisory: 'পরামর্শ কেন্দ্র',
+  nav_advisory: 'AI পরামর্শ',
   nav_notifications: 'এসএমএস ও ভয়েস',
   nav_extension: 'সম্প্রসারণ ড্যাশবোর্ড',
   nav_methodology: 'তথ্য ও পদ্ধতি',
@@ -361,7 +363,7 @@ export const bn: typeof en = {
   farm_disclaimer: '⚠ মোট মার্জিন নিট পারিবারিক আয় বা নিশ্চিত লাভ নয়। সমস্ত মান ব্যবহারকারীর প্রবেশকৃত অনুমান ব্যবহার করে। ডিফল্ট চিত্রিত।',
 
   // Advisory
-  advisory_title: 'বাংলা পরামর্শ কেন্দ্র',
+  advisory_title: 'AI পরামর্শ কেন্দ্র',
   advisory_subtitle: 'দ্বিভাষিক ফসল ও লবণাক্ততা নির্দেশিকা',
   advisory_generate: 'পরামর্শ তৈরি করুন',
   advisory_print: 'প্রিন্ট',
