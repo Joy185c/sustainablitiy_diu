@@ -83,7 +83,7 @@ export default function EditFarmPage() {
   }
 
   return (
-    <div style={{ maxWidth: 680, margin: '0 auto', padding: '24px 20px', display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <div style={{ width: '100%', padding: '0', display: 'flex', flexDirection: 'column', gap: 20 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
         <button onClick={() => navigate(`/my-farms/${farm.id}`)}
           style={{ background: '#f9fafb', border: '1px solid #e5e7eb', borderRadius: 8, padding: '7px 12px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, fontSize: 13, color: '#374151' }}>

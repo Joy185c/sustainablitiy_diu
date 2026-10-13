@@ -43,7 +43,7 @@ export default function Advisory() {
 
       <DemoBanner text="Advisory text uses locally verified agronomic information and illustrative demonstration data. Consult a local agricultural extension officer before making planting decisions." />
 
-      <div style={{ display: 'grid', gridTemplateColumns: generated ? '320px 1fr' : '1fr', gap: 20, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: generated ? 'minmax(300px, 360px) 1fr' : '1fr', gap: 20, alignItems: 'start' }}>
 
         {/* Controls */}
         <Card>

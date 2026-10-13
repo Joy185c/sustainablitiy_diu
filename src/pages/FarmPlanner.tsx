@@ -79,7 +79,7 @@ export default function FarmPlanner() {
       <PageHeader title={t.farm_title} subtitle={t.farm_subtitle} />
       <DemoBanner text={t.farm_disclaimer} />
 
-      <div style={{ display: 'grid', gridTemplateColumns: results ? '380px 1fr' : '500px', gap: 20, justifyContent: results ? undefined : 'center' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: results ? 'minmax(340px, 420px) 1fr' : '1fr', gap: 20, alignItems: 'start' }}>
 
         {/* Form */}
         <Card>

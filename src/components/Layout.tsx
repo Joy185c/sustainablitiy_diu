@@ -34,8 +34,8 @@ export default function Layout() {
       {/* Main content */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
         <Header onMenuToggle={() => setMobileOpen(o => !o)} />
-        <main style={{ flex: 1, overflowY: 'auto', padding: '24px', maxWidth: '100%' }}>
-          <div className="animate-in">
+        <main style={{ flex: 1, overflowY: 'auto', padding: '24px', width: '100%', boxSizing: 'border-box' }}>
+          <div className="animate-in" style={{ width: '100%' }}>
             <Outlet />
           </div>
         </main>

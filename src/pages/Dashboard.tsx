@@ -37,7 +37,9 @@ export default function Dashboard() {
       {farms.length === 0 ? (
         <Card style={{ background: 'linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%)', border: '2px dashed #86efac' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
-            <div style={{ fontSize: 40 }}>🌾</div>
+            <div style={{ width: 56, height: 56, borderRadius: 14, background: 'linear-gradient(135deg, #0f3b24, #1a5c38)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <Sprout size={26} color="#6ee7b7" />
+            </div>
             <div style={{ flex: 1 }}>
               <div style={{ fontWeight: 700, fontSize: 16, color: '#0f3b24', marginBottom: 5 }}>Set Up Your First Farm</div>
               <div style={{ fontSize: 13.5, color: '#4b5563', lineHeight: 1.6 }}>
@@ -52,7 +54,9 @@ export default function Dashboard() {
       ) : (
         <Card style={{ background: 'linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%)', border: '1px solid #bbf7d0' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap', marginBottom: 14 }}>
-            <div style={{ fontSize: 24 }}>🌾</div>
+            <div style={{ width: 32, height: 32, borderRadius: 8, background: 'linear-gradient(135deg, #0f3b24, #1a5c38)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <Sprout size={16} color="#6ee7b7" />
+            </div>
             <div style={{ fontWeight: 700, fontSize: 15, color: '#0f3b24' }}>My Farms — {farms.length} registered</div>
             <Button variant="secondary" size="sm" onClick={() => navigate('/my-farms')} style={{ marginLeft: 'auto' }}>
               Manage Farms
@@ -127,8 +131,8 @@ export default function Dashboard() {
       {/* Risk Trend Chart */}
       <Card>
         <SectionTitle>{t.dash_trend_title}</SectionTitle>
-        <div style={{ fontSize: 11.5, color: '#9ca3af', marginBottom: 12 }}>
-          📌 Illustrative demonstration data — not a validated predictive model
+        <div style={{ fontSize: 11.5, color: '#9ca3af', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 5 }}>
+          <MapPin size={11} color="#9ca3af" /> Illustrative demonstration data — not a validated predictive model
         </div>
         <div style={{ height: 240 }}>
           <ResponsiveContainer width="100%" height="100%">

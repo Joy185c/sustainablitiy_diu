@@ -73,7 +73,9 @@ function MethodSelector({ onSelect }: { onSelect: (m: Method) => void }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '48px 24px', gap: 32 }}>
       <div style={{ textAlign: 'center', maxWidth: 520 }}>
-        <div style={{ fontSize: 48, marginBottom: 16 }}>🌾</div>
+        <div style={{ width: 56, height: 56, borderRadius: 14, background: 'linear-gradient(135deg, #0f3b24, #1a5c38)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <MapPinned size={26} color="#6ee7b7" />
+        </div>
         <h2 style={{ fontSize: 24, fontWeight: 800, color: '#0f3b24', marginBottom: 10 }}>Add Your Farm</h2>
         <p style={{ fontSize: 15, color: '#4b5563', lineHeight: 1.7 }}>
           Choose how you'd like to identify your farmland. Both methods result in accurate location and area data.
@@ -133,7 +135,7 @@ function MethodSelector({ onSelect }: { onSelect: (m: Method) => void }) {
               </div>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-              {['📋 Fill form', '🔍 Auto-detect', '✅ Confirm & save'].map(t => (
+              {['Fill form', 'Auto-detect location', 'Confirm & save'].map(t => (
                 <span key={t} style={{ fontSize: 11, background: '#f0fdfa', color: '#0f766e', borderRadius: 20, padding: '3px 9px', border: '1px solid #99f6e4' }}>{t}</span>
               ))}
             </div>
@@ -145,7 +147,7 @@ function MethodSelector({ onSelect }: { onSelect: (m: Method) => void }) {
       </div>
 
       <div style={{ fontSize: 12.5, color: '#9ca3af', textAlign: 'center', maxWidth: 400 }}>
-        💡 Tip: The "Fill Form" option works great if you know your village name, upazila, or land record numbers (Dag/JL).
+        Tip: The "Fill Form" option works great if you know your village name, upazila, or land record numbers (Dag/JL).
       </div>
     </div>
   );

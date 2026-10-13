@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Polygon, CircleMarker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Edit, Trash2, ArrowLeft, MapPin, Sprout, Maximize2, ExternalLink } from 'lucide-react';
+import { Edit, Trash2, ArrowLeft, MapPin, Sprout, Maximize2, ExternalLink,
+  Ruler, RulerIcon, LocateFixed, ClipboardList } from 'lucide-react';
 import { useFarms } from '../farms/FarmsContext';
 import { fmtArea } from '../farms/farmTypes';
 import { Card, SectionTitle, Button } from '../components/ui';
@@ -96,7 +97,11 @@ export default function FarmDetailPage() {
         </Card>
       ) : (
         <Card style={{ textAlign: 'center', padding: '32px', background: '#f9fafb' }}>
-          <div style={{ fontSize: 32, marginBottom: 12 }}>🗺️</div>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 12 }}>
+            <div style={{ width: 52, height: 52, borderRadius: 14, background: '#e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Maximize2 size={22} color="#6b7280" />
+            </div>
+          </div>
           <div style={{ fontWeight: 600, color: '#374151', marginBottom: 8 }}>No Boundary Saved</div>
           <Button variant="secondary" onClick={() => navigate(`/my-farms/${farm.id}/edit-boundary`)}>
             Draw Farm Boundary
@@ -104,13 +109,12 @@ export default function FarmDetailPage() {
         </Card>
       )}
 
-      {/* Key metrics */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
-        <MetricCard label="Estimated Area" value={farm.estimatedArea ? fmtArea(farm.estimatedArea * getM2Factor(farm.estimatedAreaUnit), farm.estimatedAreaUnit) : '—'} icon="📐" />
-        <MetricCard label="Perimeter" value={farm.perimeterMeters ? `${(farm.perimeterMeters / 1000).toFixed(3)} km` : '—'} icon="📏" />
-        <MetricCard label="Boundary Points" value={`${leafletPoints.length}`} icon="📍" />
+        <MetricCard label="Estimated Area" value={farm.estimatedArea ? fmtArea(farm.estimatedArea * getM2Factor(farm.estimatedAreaUnit), farm.estimatedAreaUnit) : '—'} icon={<Ruler size={20} color="#1a5c38" />} />
+        <MetricCard label="Perimeter" value={farm.perimeterMeters ? `${(farm.perimeterMeters / 1000).toFixed(3)} km` : '—'} icon={<RulerIcon size={20} color="#0d9488" />} />
+        <MetricCard label="Boundary Points" value={`${leafletPoints.length}`} icon={<LocateFixed size={20} color="#7c3aed" />} />
         {farm.recordedArea && (
-          <MetricCard label="Recorded Area" value={`${farm.recordedArea} ${farm.recordedAreaUnit}`} icon="📋" />
+          <MetricCard label="Recorded Area" value={`${farm.recordedArea} ${farm.recordedAreaUnit}`} icon={<ClipboardList size={20} color="#d97706" />} />
         )}
       </div>
 
@@ -202,10 +206,12 @@ function getM2Factor(unit: string) {
   }
 }
 
-function MetricCard({ label, value, icon }: { label: string; value: string; icon: string }) {
+function MetricCard({ label, value, icon }: { label: string; value: string; icon: React.ReactNode }) {
   return (
     <Card style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-      <div style={{ fontSize: 28 }}>{icon}</div>
+      <div style={{ width: 42, height: 42, borderRadius: 10, background: '#f0fdf4', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        {icon}
+      </div>
       <div>
         <div style={{ fontSize: 11, color: '#9ca3af', marginBottom: 3 }}>{label}</div>
         <div style={{ fontWeight: 700, fontSize: 15, color: '#111827' }}>{value}</div>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Search, Trash2, Eye, Edit, Map, Sprout, LayoutGrid, List } from 'lucide-react';
+import { Plus, Search, Trash2, Eye, Edit, Map, Sprout, LayoutGrid, List, LocateFixed, FlaskConical } from 'lucide-react';
 import { useFarms } from '../farms/FarmsContext';
 import { Card, PageHeader, StatCard, Button, DemoBanner } from '../components/ui';
 
@@ -41,7 +41,11 @@ export default function MyFarmsPage() {
           padding: '80px 24px', textAlign: 'center',
           background: '#fff', borderRadius: 16, border: '2px dashed #d1d5db',
         }}>
-          <div style={{ fontSize: 56, marginBottom: 16 }}>🌾</div>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+            <div style={{ width: 72, height: 72, borderRadius: 18, background: 'linear-gradient(135deg, #f0fdf4, #dcfce7)', border: '2px dashed #86efac', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Sprout size={32} color="#16a34a" />
+            </div>
+          </div>
           <div style={{ fontSize: 20, fontWeight: 700, color: '#0f3b24', marginBottom: 8 }}>No Farms Registered Yet</div>
           <div style={{ fontSize: 14, color: '#6b7280', maxWidth: 380, lineHeight: 1.7, marginBottom: 28 }}>
             Add your first farm to get personalized salinity analysis, crop recommendations, and boundary tracking.
@@ -70,10 +74,10 @@ export default function MyFarmsPage() {
 
       {/* Stats */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 14 }}>
-        <StatCard icon={<span style={{ fontSize: 20 }}>🌾</span>} label="Total Farms" value={farms.length} color="#1a5c38" sub="Registered in this browser" />
-        <StatCard icon={<span style={{ fontSize: 20 }}>📐</span>} label="With Boundaries" value={farms.filter(f => f.polygonGeometry).length} color="#0d9488" sub="Have drawn polygon" />
+        <StatCard icon={<Sprout size={18} color="#1a5c38" />} label="Total Farms" value={farms.length} color="#1a5c38" sub="Registered in this browser" />
+        <StatCard icon={<LocateFixed size={18} color="#0d9488" />} label="With Boundaries" value={farms.filter(f => f.polygonGeometry).length} color="#0d9488" sub="Have drawn polygon" />
         <StatCard icon={<Sprout size={18} color="#d97706" />} label="With Crop Info" value={farms.filter(f => f.primaryCrop).length} color="#d97706" sub="Primary crop set" />
-        <StatCard icon={<span style={{ fontSize: 20 }}>🧪</span>} label="With EC Data" value={farms.filter(f => f.soilSalinityEC).length} color="#7c3aed" sub="Soil EC provided" />
+        <StatCard icon={<FlaskConical size={18} color="#7c3aed" />} label="With EC Data" value={farms.filter(f => f.soilSalinityEC).length} color="#7c3aed" sub="Soil EC provided" />
       </div>
 
       {/* Controls */}

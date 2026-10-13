@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { Info } from 'lucide-react';
 import type { DataStatus, RiskLevel } from '../data/mockData';
 
 // ── DataStatusBadge ──────────────────────────────────────────
@@ -225,7 +226,7 @@ export function EmptyState({ icon, title, sub }: { icon: ReactNode; title: strin
 export function SourceNote({ source, date }: { source: string; date?: string }) {
   return (
     <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 8, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-      <span>📌 Source: {source}</span>
+      <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><Info size={11} color="#9ca3af" /> Source: {source}</span>
       {date && <span>· Last updated: {date}</span>}
     </div>
   );

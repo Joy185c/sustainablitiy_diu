@@ -144,7 +144,7 @@ export default function CropPlanner() {
 
       <DemoBanner text={t.crop_rules_notice} />
 
-      <div style={{ display: 'grid', gridTemplateColumns: results ? '380px 1fr' : '1fr', gap: 20 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: results ? 'minmax(340px, 420px) 1fr' : '1fr', gap: 20, alignItems: 'start' }}>
 
         {/* Form */}
         <Card>
